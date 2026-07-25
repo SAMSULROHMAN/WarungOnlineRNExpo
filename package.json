@@ -4,10 +4,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "dependencies": {
+    "@expo/metro-config": "^57.0.7",
+    "babel-preset-expo": "^57.0.4",
     "expo": "~57.0.8",
     "expo-status-bar": "~57.0.1",
     "react": "19.2.3",
-    "react-native": "0.86.0"
+    "react-native": "0.86.0",
+    "react-native-svg": "^15.15.5"
   },
   "scripts": {
     "start": "expo start",
@@ -15,5 +18,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web"
   },
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "react-native-svg-transformer": "^1.5.3"
+  }
 }
