@@ -1,13 +1,15 @@
-import React from 'react'
-import { SafeAreaView, StatusBar, Text } from 'react-native'
-import { SplashScreen } from './pages'
+import React from "react";
+import { SafeAreaView, StatusBar, Text } from "react-native";
+import { SplashScreen, SignIn } from "./pages";
+import { NavigationContainer } from "@react-navigation/native";
 
 const App = () => {
   return (
-    <SplashScreen>
-      
-    </SplashScreen>
-  )
-}
+    <NavigationContainer>
+      {/* <SplashScreen /> */}
+      <SignIn />
+    </NavigationContainer>
+  );
+};
 
-export default App
+export default App;

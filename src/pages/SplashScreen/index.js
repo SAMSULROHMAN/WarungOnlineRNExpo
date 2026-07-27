@@ -5,11 +5,13 @@ import { useFonts } from 'expo-font'
 
 const SplashScreen = () => {
     const [fontsLoaded] = useFonts({
-        'Poppins': require('../../assets/fonts/Poppins-Regular.ttf'),
-        'Poppins-Medium': require('../../assets/fonts/Poppins-Medium.ttf'),
+        'Poppins': require('../../../assets/fonts/Poppins-Regular.ttf'),
+        'Poppins-Medium': require('../../../assets/fonts/Poppins-Medium.ttf'),
     })
 
-    if (!fontsLoaded) return null
+    if (!fontsLoaded) {
+        return null
+    }
 
     return (
         <View 
@@ -24,9 +26,8 @@ const SplashScreen = () => {
             <Text style={{ 
                 fontFamily: 'Poppins-Medium',
                 fontSize: 32,
-                color: '#020202',
-                
-             }}> WarungOnline </Text>
+                color: '#020202',    
+             }}>FoodMarket</Text>
         </View>
     )
 }
