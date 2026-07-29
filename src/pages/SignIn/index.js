@@ -7,9 +7,9 @@ const SignIn = ({ navigation }) => {
     <View style={styles.page}>
       <Header title="Sign In" subTitle="Find your best ever meal" />
       <View style={styles.container}>
-        <TextInput label="Email Address" placeholder="Ketikkan Email Address" />
+        <TextInput label="Email Address" placeholder="Type your email address" />
         <Gap height={16} />
-        <TextInput label="Password" placeholder="Ketikkan Password" />
+        <TextInput label="Password" placeholder="Type your password" />
         <Gap height={24} />
         <Button text="Sign In" />
         <Gap height={12} />

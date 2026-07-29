@@ -3,7 +3,7 @@ import React from "react";
 import { Button, Gap, Header, TextInput } from "../../components";
 import { useFonts } from "expo-font";
 
-const SignUp = () => {
+const SignUp = ({navigation}) => {
     const [fontsLoaded] = useFonts({
         "Poppins-Light": require("../../../assets/fonts/Poppins-Light.ttf"),
     });
@@ -11,25 +11,25 @@ const SignUp = () => {
     if (!fontsLoaded) return null;
 
     return (
-    <View style={styles.page}>
-        <Header title="Sign Up" subTitle="Register and Eat" onBack={() => {}} />        
-        <View style={styles.container}>
-            <View style={styles.photo}>    
-                <View style={styles.borderPhoto}>
-                    <View style={styles.photoContainer}>
-                        <Text style={styles.addPhoto}>Add Photo</Text>
+        <View style={styles.page}>
+            <Header title="Sign Up" subTitle="Register and Eat" onBack={() => {}} />        
+            <View style={styles.container}>
+                <View style={styles.photo}>    
+                    <View style={styles.borderPhoto}>
+                        <View style={styles.photoContainer}>
+                            <Text style={styles.addPhoto}>Add Photo</Text>
+                        </View>
                     </View>
                 </View>
+                <TextInput label="Full Name" placeholder="Type your Fullname" />
+                <Gap height={16} />
+                <TextInput label="Email Address" placeholder="Type your email address" />
+                <Gap height={16} />
+                <TextInput label="Password" placeholder="Type your password" />
+                <Gap height={24} />
+                <Button text="Continue" onPress={() => navigation.navigate('SignUpAddress')}/>
             </View>
-            <TextInput label="Full Name" placeholder="Ketikkan Nama Lengkap Kamu" />
-            <Gap height={16} />
-            <TextInput label="Email Address" placeholder="Ketikkan Email Address" />
-            <Gap height={16} />
-            <TextInput label="Password" placeholder="Ketikkan Password" />
-            <Gap height={24} />
-            <Button text="Lanjut" />
         </View>
-    </View>
     );
 };
 
