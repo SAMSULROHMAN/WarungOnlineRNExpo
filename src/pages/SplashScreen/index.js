@@ -1,9 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Text, View } from 'react-native'
 import { WarungLogo } from '../../assets'
 import { useFonts } from 'expo-font'
 
-const SplashScreen = () => {
+const SplashScreen = ({navigation}) => {
+    
+    useEffect(() => {
+        setTimeout(() => {
+            navigation.replace('SignIn')
+        },2000)
+    }, [])
+
     const [fontsLoaded] = useFonts({
         'Poppins': require('../../../assets/fonts/Poppins-Regular.ttf'),
         'Poppins-Medium': require('../../../assets/fonts/Poppins-Medium.ttf'),
@@ -27,7 +34,7 @@ const SplashScreen = () => {
                 fontFamily: 'Poppins-Medium',
                 fontSize: 32,
                 color: '#020202',    
-             }}>FoodMarket</Text>
+             }}> WarungOnline </Text>
         </View>
     )
 }
