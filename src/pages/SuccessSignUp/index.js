@@ -4,7 +4,7 @@ import { IlSuccessSignUp } from '../../assets/Ilustration'
 import { Button, Gap } from '../../components'
 import { useFonts } from 'expo-font'
 
-const SuccessSignUp = () => {
+const SuccessSignUp = ({ navigation }) => {
     const [fontsLoaded] = useFonts({
             'Poppins-Regular': require('../../../assets/fonts/Poppins-Regular.ttf'),
             'Poppins-Light': require('../../../assets/fonts/Poppins-Light.ttf')
@@ -23,7 +23,7 @@ const SuccessSignUp = () => {
             <Text style={styles.subTitle}>some foods as a self-reward</Text>
             <Gap height={30} />
             <View style={styles.buttonContainer}>
-                <Button text="Find Foods"/>
+                <Button text="Find Foods" onPress={() => navigation.replace('MainApp')}/>
             </View>
         </View>
     )

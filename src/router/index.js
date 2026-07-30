@@ -1,8 +1,21 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { SignIn, SplashScreen, SignUp, SignUpAddress, SuccessSignUp } from "../pages";
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { SignIn, SplashScreen, SignUp, SignUpAddress, SuccessSignUp, Home, Order, Profile } from "../pages";
 
 const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
+
+const MainApp = () => {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen name="Home" component={ Home } />
+      <Tab.Screen name="Order" component={ Order } />
+      <Tab.Screen name="Profile" component={ Profile } />
+    </Tab.Navigator>
+  )
+}
+
 const Router = () => {
   return (
     <Stack.Navigator>
@@ -29,6 +42,11 @@ const Router = () => {
       <Stack.Screen
         name="SuccessSignUp"
         component={SuccessSignUp}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="MainApp"
+        component={MainApp}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>
