@@ -3,7 +3,7 @@ import React from 'react'
 import { Button, Gap, Header, Select, TextInput } from "../../components";
 import { useFonts } from "expo-font";
 
-const SignUpAddress = () => {
+const SignUpAddress = ({ navigation }) => {
     const [fontsLoaded] = useFonts({
         "Poppins-Light": require("../../../assets/fonts/Poppins-Light.ttf"),
     });
@@ -21,9 +21,9 @@ const SignUpAddress = () => {
             <Gap height={16} />
             {/* <TextInput label="City" placeholder="Ketikkan Password" /> */}
             <Gap height={16} />
-            <Select />
+            <Select label="City" />
             <Gap height={24} />
-            <Button text="Sign Up Now" />
+            <Button text="Sign Up Now" onPress={() => navigation.replace("SuccessSignUp")}/>
         </View>
     </View>
     )
