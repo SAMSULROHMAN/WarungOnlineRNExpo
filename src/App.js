@@ -1,14 +1,16 @@
 import React from "react";
-import { SafeAreaView, StatusBar, Text } from "react-native";
-import { SplashScreen, SignIn } from "./pages";
 import { NavigationContainer } from "@react-navigation/native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 import Router from "./router";
 
 const App = () => {
+
   return (
-    <NavigationContainer>
-      <Router />
-    </NavigationContainer>
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <Router />
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 };
 
