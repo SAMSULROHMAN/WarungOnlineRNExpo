@@ -1,7 +1,9 @@
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image, ScrollView } from "react-native";
 import React from "react";
-import { ProfileDummy } from "../../assets";
+import { FoodDummy1, FoodDummy2, FoodDummy3, FoodDummy4, ProfileDummy } from "../../assets";
 import { useFonts } from "expo-font";
+import FoodCard from "../../components/molecules/FoodCard";
+import { Gap } from "../../components";
 
 const Home = () => {
   const [fontsLoaded] = useFonts({
@@ -21,7 +23,15 @@ const Home = () => {
         </View>
         <Image source={ProfileDummy} style={styles.profile} />
       </View>
-      <Text>Home Page</Text>
+      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+        <View style={styles.foodCardContainer}>
+          <Gap width={24}/>
+            <FoodCard image={FoodDummy1}/>
+            <FoodCard image={FoodDummy2}/>
+            <FoodCard image={FoodDummy3}/>
+            <FoodCard image={FoodDummy4}/>
+        </View>
+      </ScrollView>
     </View>
   );
 };
@@ -42,14 +52,18 @@ const styles = StyleSheet.create({
     paddingBottom: 24,
     backgroundColor: "white",
   },
+  foodCardContainer: {
+    flexDirection: "row",
+    marginVertical: 24
+  },
   appName: {
     fontFamily: "Poppins-Medium",
     fontSize: 22,
     color: "#020202",
   },
-  desc : {
+  desc: {
     fontSize: 14,
-    fontFamily: 'Poppins-Light',
-    color: '#8D92A3'
-  }
+    fontFamily: "Poppins-Light",
+    color: "#8D92A3",
+  },
 });
