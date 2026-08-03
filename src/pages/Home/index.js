@@ -17,9 +17,9 @@ import {
 import { useFonts } from "expo-font";
 import FoodCard from "../../components/molecules/FoodCard";
 import { Gap } from "../../components";
-import { TabView, SceneMap } from "react-native-tab-view";
+import { TabView, SceneMap, TabBar } from "react-native-tab-view";
 
-const Home = () => {
+const useFontsLoaded = () => {
   const [fontsLoaded] = useFonts({
     "Poppins-Medium": require("../../../assets/fonts/Poppins-Medium.ttf"),
     "Poppins-Light": require("../../../assets/fonts/Poppins-Light.ttf"),
@@ -29,30 +29,82 @@ const Home = () => {
     return null;
   }
 
+  return fontsLoaded;
+};
+
+const renderTabBar = (props) => (
+  <TabBar
+    {...props}
+    activeColor="#020202"
+    inactiveColor="#8D92A3"
+    indicatorStyle={{
+      backgroundColor: "#020202",
+      height: 3,
+      width: "15%",
+      marginLeft: "3%",
+    }}
+    style={{ backgroundColor: "white" }}
+    tabStyle={{ width: "auto" }}
+    options={{
+      first: { labelStyle: { fontFamily: "Poppins-Medium" } },
+      second: { labelStyle: { fontFamily: "Poppins-Medium" } },
+      third: { labelStyle: { fontFamily: "Poppins-Medium" } },
+    }}
+  />
+);
+
+const Home = () => {
+  const fontsLoaded = useFontsLoaded();
+
+  if (!fontsLoaded) {
+    return null;
+  }
+
   const layout = useWindowDimensions();
   const [index, setIndex] = React.useState(0);
 
   const FirstRoute = () => (
-    <View style={{ backgroundColor: '#FAFAFC', flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <View
+      style={{
+        backgroundColor: "#FAFAFC",
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
       <Text>Menu Pertama</Text>
     </View>
   );
 
   const SecondRoute = () => (
-    <View style={{ backgroundColor: '#dd1378', flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <View
+      style={{
+        backgroundColor: "#dd1378",
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
       <Text>Menu Kedua</Text>
     </View>
   );
-  
+
   const ThirdRoute = () => (
-    <View style={{ backgroundColor: '#13dd2e', flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <View
+      style={{
+        backgroundColor: "#13dd2e",
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
       <Text>Menu Ketiga</Text>
     </View>
   );
   const renderScene = SceneMap({
     first: FirstRoute,
     second: SecondRoute,
-    third: ThirdRoute
+    third: ThirdRoute,
   });
 
   const routes = [
@@ -83,6 +135,7 @@ const Home = () => {
       </View>
       <View style={styles.tabContainer}>
         <TabView
+          renderTabBar={renderTabBar}
           navigationState={{ index, routes }}
           renderScene={renderScene}
           onIndexChange={setIndex}
@@ -127,6 +180,6 @@ const styles = StyleSheet.create({
     color: "#8D92A3",
   },
   tabContainer: {
-    flex: 1
-  }
+    flex: 1,
+  },
 });
