@@ -1,9 +1,23 @@
-import { StyleSheet, Text, View, Image, ScrollView } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  ScrollView,
+  useWindowDimensions,
+} from "react-native";
 import React from "react";
-import { FoodDummy1, FoodDummy2, FoodDummy3, FoodDummy4, ProfileDummy } from "../../assets";
+import {
+  FoodDummy1,
+  FoodDummy2,
+  FoodDummy3,
+  FoodDummy4,
+  ProfileDummy,
+} from "../../assets";
 import { useFonts } from "expo-font";
 import FoodCard from "../../components/molecules/FoodCard";
 import { Gap } from "../../components";
+import { TabView, SceneMap } from "react-native-tab-view";
 
 const Home = () => {
   const [fontsLoaded] = useFonts({
@@ -14,8 +28,41 @@ const Home = () => {
   if (!fontsLoaded) {
     return null;
   }
+
+  const layout = useWindowDimensions();
+  const [index, setIndex] = React.useState(0);
+
+  const FirstRoute = () => (
+    <View style={{ backgroundColor: '#FAFAFC', flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Menu Pertama</Text>
+    </View>
+  );
+
+  const SecondRoute = () => (
+    <View style={{ backgroundColor: '#dd1378', flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Menu Kedua</Text>
+    </View>
+  );
+  
+  const ThirdRoute = () => (
+    <View style={{ backgroundColor: '#13dd2e', flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Menu Ketiga</Text>
+    </View>
+  );
+  const renderScene = SceneMap({
+    first: FirstRoute,
+    second: SecondRoute,
+    third: ThirdRoute
+  });
+
+  const routes = [
+    { key: "first", title: "New Taste" },
+    { key: "second", title: "Popular" },
+    { key: "third", title: "Recomended" },
+  ];
+
   return (
-    <View>
+    <View style={styles.page}>
       <View style={styles.profileContainer}>
         <View>
           <Text style={styles.appName}>Warung Online</Text>
@@ -23,15 +70,25 @@ const Home = () => {
         </View>
         <Image source={ProfileDummy} style={styles.profile} />
       </View>
-      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-        <View style={styles.foodCardContainer}>
-          <Gap width={24}/>
-            <FoodCard image={FoodDummy1}/>
-            <FoodCard image={FoodDummy2}/>
-            <FoodCard image={FoodDummy3}/>
-            <FoodCard image={FoodDummy4}/>
-        </View>
-      </ScrollView>
+      <View>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+          <View style={styles.foodCardContainer}>
+            <Gap width={24} />
+            <FoodCard image={FoodDummy1} />
+            <FoodCard image={FoodDummy2} />
+            <FoodCard image={FoodDummy3} />
+            <FoodCard image={FoodDummy4} />
+          </View>
+        </ScrollView>
+      </View>
+      <View style={styles.tabContainer}>
+        <TabView
+          navigationState={{ index, routes }}
+          renderScene={renderScene}
+          onIndexChange={setIndex}
+          initialLayout={{ width: layout.width }}
+        />
+      </View>
     </View>
   );
 };
@@ -39,6 +96,9 @@ const Home = () => {
 export default Home;
 
 const styles = StyleSheet.create({
+  page: {
+    flex: 1,
+  },
   profile: {
     width: 50,
     height: 50,
@@ -54,7 +114,7 @@ const styles = StyleSheet.create({
   },
   foodCardContainer: {
     flexDirection: "row",
-    marginVertical: 24
+    marginVertical: 24,
   },
   appName: {
     fontFamily: "Poppins-Medium",
@@ -66,4 +126,7 @@ const styles = StyleSheet.create({
     fontFamily: "Poppins-Light",
     color: "#8D92A3",
   },
+  tabContainer: {
+    flex: 1
+  }
 });
