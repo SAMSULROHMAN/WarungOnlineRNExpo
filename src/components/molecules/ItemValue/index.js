@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { useFonts } from "expo-font";
 
-const ItemValue = ({label, value}) => {
+const ItemValue = ({label, value, valueColor="#020202"}) => {
   const [fontsLoaded] = useFonts({
     "Poppins-Regular": require("../../../../assets/fonts/Poppins-Regular.ttf"),
   });
@@ -11,7 +11,7 @@ const ItemValue = ({label, value}) => {
   return (
     <View style={styles.container}>
       <Text style={styles.label}>{label}</Text>
-      <Text style={styles.value}>{value}</Text>
+      <Text style={styles.value(valueColor)}>{value}</Text>
     </View>
   );
 };
@@ -28,9 +28,9 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins-Regular',
     color: '#8D92A3'
   },
-  value:{
+  value: (color) => ({
     fontSize: 14,
     fontFamily: 'Poppins-Regular',
-    color: '#020202'
-  }
+    color: color
+  })
 });
