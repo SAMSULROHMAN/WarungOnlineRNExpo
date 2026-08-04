@@ -15,6 +15,7 @@ import {
   FoodDummy3,
   FoodDummy4,
 } from "../../../assets";
+import { useNavigation } from "@react-navigation/native";
 
 const useFontsLoaded = () => {
   const [fontsLoaded] = useFonts({
@@ -40,7 +41,13 @@ const renderTabBar = (props) => (
       width: "15%",
       marginLeft: "3%",
     }}
-    style={{ backgroundColor: "white" }}
+    style={{
+      backgroundColor: "white",
+      elevation: 0,
+      shadowOpacity: 0,
+      borderBottomColor: "#F2F2F2",
+      borderBottomWidth: 1,
+    }}
     tabStyle={{ width: "auto" }}
     options={{
       first: { labelStyle: { fontFamily: "Poppins-Medium" } },
@@ -54,32 +61,77 @@ const HomeTabSection = () => {
   const layout = useWindowDimensions();
   const [index, setIndex] = React.useState(0);
 
-  const NewTaste = () => (
-    <View style={{ paddingTop: 8 }}>
-      <ItemListFood image={FoodDummy1} />
-      <ItemListFood image={FoodDummy2} />
-      <ItemListFood image={FoodDummy3} />
-      <ItemListFood image={FoodDummy4} />
-    </View>
-  );
+  const NewTaste = () => {
+    const navigation = useNavigation();
+    return (
+      <View style={{ paddingTop: 8 }}>
+        <ItemListFood
+          image={FoodDummy1}
+          onPress={() => navigation.navigate("FoodDetail")}
+        />
+        <ItemListFood
+          image={FoodDummy2}
+          onPress={() => navigation.navigate("FoodDetail")}
+        />
+        <ItemListFood
+          image={FoodDummy3}
+          onPress={() => navigation.navigate("FoodDetail")}
+        />
+        <ItemListFood
+          image={FoodDummy4}
+          onPress={() => navigation.navigate("FoodDetail")}
+        />
+      </View>
+    );
+  };
 
-  const Popular = () => (
-    <View style={{ paddingTop: 8 }}>
-      <ItemListFood image={FoodDummy4} />
-      <ItemListFood image={FoodDummy3} />
-      <ItemListFood image={FoodDummy2} />
-      <ItemListFood image={FoodDummy1} />
-    </View>
-  );
+  const Popular = () => {
+    const navigation = useNavigation();
+    return (
+      <View style={{ paddingTop: 8 }}>
+        <ItemListFood
+          image={FoodDummy4}
+          onPress={() => navigation.navigate("FoodDetail")}
+        />
+        <ItemListFood
+          image={FoodDummy3}
+          onPress={() => navigation.navigate("FoodDetail")}
+        />
+        <ItemListFood
+          image={FoodDummy2}
+          onPress={() => navigation.navigate("FoodDetail")}
+        />
+        <ItemListFood
+          image={FoodDummy1}
+          onPress={() => navigation.navigate("FoodDetail")}
+        />
+      </View>
+    );
+  };
+  const Recomended = () => {
+    const navigation = useNavigation();
 
-  const Recomended = () => (
-    <View style={{ paddingTop: 8 }}>
-      <ItemListFood image={FoodDummy2} />
-      <ItemListFood image={FoodDummy3} />
-      <ItemListFood image={FoodDummy1} />
-      <ItemListFood image={FoodDummy4} />
-    </View>
-  );
+    return (
+      <View style={{ paddingTop: 8 }}>
+        <ItemListFood
+          image={FoodDummy2}
+          onPress={() => navigation.navigate("FoodDetail")}
+        />
+        <ItemListFood
+          image={FoodDummy3}
+          onPress={() => navigation.navigate("FoodDetail")}
+        />
+        <ItemListFood
+          image={FoodDummy1}
+          onPress={() => navigation.navigate("FoodDetail")}
+        />
+        <ItemListFood
+          image={FoodDummy4}
+          onPress={() => navigation.navigate("FoodDetail")}
+        />
+      </View>
+    );
+  };
   const renderScene = SceneMap({
     first: NewTaste,
     second: Popular,
@@ -105,7 +157,7 @@ const HomeTabSection = () => {
       renderScene={renderScene}
       onIndexChange={setIndex}
       initialLayout={{ width: layout.width }}
-      style={{ height: 350 }}
+      style={{ height: 350, backgroundColor: "white" }}
     />
   );
 };

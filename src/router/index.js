@@ -10,6 +10,7 @@ import {
   Home,
   Order,
   Profile,
+  FoodDetail,
 } from "../pages";
 import { BottomNavigator } from "../components";
 
@@ -24,7 +25,7 @@ const MainApp = () => {
       }}
       tabBar={(props) => <BottomNavigator {...props} />}
     >
-      <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen name="Home" component={Home} options={{ headerShown: false }}/>
       <Tab.Screen name="Order" component={Order} />
       <Tab.Screen name="Profile" component={Profile} />
     </Tab.Navigator>
@@ -62,6 +63,11 @@ const Router = () => {
       <Stack.Screen
         name="MainApp"
         component={MainApp}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="FoodDetail"
+        component={FoodDetail}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

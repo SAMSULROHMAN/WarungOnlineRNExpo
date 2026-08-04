@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, ScrollView } from "react-native";
 import React from "react";
 import { FoodDummy1, FoodDummy2, FoodDummy3, FoodDummy4 } from "../../assets";
-import { useFonts } from "expo-font";
+
 import {
   FoodCard,
   HomeProfile,
@@ -9,27 +9,7 @@ import {
 } from "../../components/molecules";
 import { Gap } from "../../components";
 
-// Fonts
-const useFontsLoaded = () => {
-  const [fontsLoaded] = useFonts({
-    "Poppins-Medium": require("../../../assets/fonts/Poppins-Medium.ttf"),
-    "Poppins-Light": require("../../../assets/fonts/Poppins-Light.ttf"),
-  });
-
-  if (!fontsLoaded) {
-    return null;
-  }
-
-  return fontsLoaded;
-};
-
 const Home = () => {
-  const fontsLoaded = useFontsLoaded();
-
-  if (!fontsLoaded) {
-    return null;
-  }
-
   return (
     <ScrollView>
       <View style={styles.page}>
