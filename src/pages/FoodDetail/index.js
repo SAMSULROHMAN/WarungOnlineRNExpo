@@ -11,7 +11,7 @@ import { Button, Counter, Rating } from "../../components";
 import { useFonts } from "expo-font";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-const FoodDetail = () => {
+const FoodDetail = ({ navigation }) => {
   const insets = useSafeAreaInsets();
 
   const [fontsLoaded] = useFonts({
@@ -41,17 +41,25 @@ const FoodDetail = () => {
             teratur.
           </Text>
           <Text style={styles.label}>Ingredients:</Text>
-          <Text style={styles.description}>Seledri, telur, blueberry, madu.</Text>
+          <Text style={styles.description}>
+            Seledri, telur, blueberry, madu.
+          </Text>
         </View>
         <View
-          style={[styles.footer, { paddingBottom: Math.max(insets.bottom, 16) }]}
+          style={[
+            styles.footer,
+            { paddingBottom: Math.max(insets.bottom, 16) },
+          ]}
         >
           <View style={styles.priceContainer}>
             <Text style={styles.labelTotal}>Total Price:</Text>
             <Text style={styles.priceTotal}>IDR 12.289.000</Text>
           </View>
           <View style={styles.button}>
-            <Button text="Order Now" />
+            <Button
+              text="Order Now"
+              onPress={() => navigation.navigate("OrderSummary")}
+            />
           </View>
         </View>
       </View>
@@ -86,14 +94,13 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   mainContent: {
-    flex: 1
+    flex: 1,
   },
   productContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     marginBottom: 14,
-
   },
   title: {
     fontSize: 16,
@@ -102,36 +109,36 @@ const styles = StyleSheet.create({
   },
   description: {
     fontSize: 14,
-    fontFamily: 'Poppins-Regular',
-    color: '#8092A3',
-    marginBottom: 16
+    fontFamily: "Poppins-Regular",
+    color: "#8092A3",
+    marginBottom: 16,
   },
   label: {
     fontSize: 14,
-    fontFamily: 'Poppins-Regular',
-    color: '#020202',
-    marginBottom: 4
+    fontFamily: "Poppins-Regular",
+    color: "#020202",
+    marginBottom: 4,
   },
   footer: {
-    flexDirection: 'row',
-    backgroundColor: 'white',
+    flexDirection: "row",
+    backgroundColor: "white",
     paddingVertical: 16,
-    alignItems: 'center'
+    alignItems: "center",
   },
   priceContainer: {
-    flex: 1
+    flex: 1,
   },
   button: {
-    width: 163
+    width: 163,
   },
   labelTotal: {
     fontSize: 13,
-    fontFamily: 'Poppins-Regular',
-    color: '#8D92A3'
+    fontFamily: "Poppins-Regular",
+    color: "#8D92A3",
   },
   priceTotal: {
     fontSize: 18,
-    fontFamily: 'Poppins-Regular',
-    color: '#020202'
-  }
+    fontFamily: "Poppins-Regular",
+    color: "#020202",
+  },
 });
