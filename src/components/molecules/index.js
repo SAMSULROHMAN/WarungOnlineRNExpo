@@ -2,6 +2,7 @@ import Header from './Header'
 import BottomNavigator from './BottomNavigator'
 import FoodCard from './FoodCard'
 import HomeTabSection from './HomeTabSection'
+import OrderTabSection from './OrderTabSection'
 import HomeProfile from './HomeProfile'
 import Rating from './Rating'
 import ItemListFood from './ItemListFood'
@@ -14,6 +15,7 @@ export {
     BottomNavigator,
     FoodCard,
     HomeTabSection,
+    OrderTabSection,
     HomeProfile,
     Rating,
     ItemListFood,
