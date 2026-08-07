@@ -13,6 +13,7 @@ import {
   FoodDetail,
   OrderSummary,
   SuccessOrder,
+  OrderDetail,
 } from "../pages";
 import { BottomNavigator } from "../components";
 
@@ -27,9 +28,21 @@ const MainApp = () => {
       }}
       tabBar={(props) => <BottomNavigator {...props} />}
     >
-      <Tab.Screen name="Home" component={Home} options={{ headerShown: false }}/>
-      <Tab.Screen name="Order" component={Order} options={{ headerShown: false }} />
-      <Tab.Screen name="Profile" component={Profile} options={{ headerShown: false }}/>
+      <Tab.Screen
+        name="Home"
+        component={Home}
+        options={{ headerShown: false }}
+      />
+      <Tab.Screen
+        name="Order"
+        component={Order}
+        options={{ headerShown: false }}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={Profile}
+        options={{ headerShown: false }}
+      />
     </Tab.Navigator>
   );
 };
@@ -75,6 +88,11 @@ const Router = () => {
       <Stack.Screen
         name="OrderSummary"
         component={OrderSummary}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="OrderDetail"
+        component={OrderDetail}
         options={{ headerShown: false }}
       />
       <Stack.Screen

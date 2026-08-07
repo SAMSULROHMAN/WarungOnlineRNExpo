@@ -1,17 +1,15 @@
-import { StyleSheet, Text, View, ScrollView } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 import React from "react";
-import { Button, Header, ItemListFood, ItemValue, Gap } from "../../components";
+import { Button, Gap, Header, ItemListFood, ItemValue } from "../../components";
 import { useFonts } from "expo-font";
 import { FoodDummy6 } from "../../assets";
 
-
-const OrderSummary = ({ navigation }) => {
+const OrderDetail = () => {
   const [fontsLoaded] = useFonts({
     "Poppins-Regular": require("../../../assets/fonts/Poppins-Regular.ttf"),
   });
 
   if (!fontsLoaded) return null;
-
   return (
     <ScrollView>
       <Header
@@ -47,9 +45,15 @@ const OrderSummary = ({ navigation }) => {
         <ItemValue label="House No." value="A5 Hook" />
         <ItemValue label="City" value="Bandung" />
       </View>
+      <View style={styles.content}>
+        <Text style={styles.label}>Order Status :</Text>
+        <ItemValue label="8D92A3" value="Paid" valueColor="#1ABC9C"/>
+      </View>
       <View style={styles.button}>
         <Button
-          text="Checkout Now"
+          text="Cancel My Order"
+          color="#D9435E"
+          textColor="white"
           onPress={() => navigation.replace("SuccessOrder")}
         />
       </View>
@@ -58,7 +62,7 @@ const OrderSummary = ({ navigation }) => {
   );
 };
 
-export default OrderSummary;
+export default OrderDetail;
 
 const styles = StyleSheet.create({
   content: {
